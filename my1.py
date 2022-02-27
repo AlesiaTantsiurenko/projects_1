@@ -16,14 +16,6 @@ def perimetr(num1, num2, num3):
     return p
 
 
-def is_positive(num1, num2):
-    """ Функция для проверки вводимых чисел - являются ли они позитивными"""
-    if num1 > 0 and num2 > 0:
-        return num1, num2
-    else:
-        print("Сторона не может быть отрицательной длины!")
-
-
 def main():
     print(" Добро пожаловать в программу расчета гипотенузы и периметра!")
     choice = None
@@ -39,14 +31,28 @@ def main():
         if choice == "0":
             print("До свидания!")
         elif choice == "1":
-            try:
-                a = float(input("Введите первую сторону треугольника "))
-                b = float(input("Введите вторую сторону треугольника "))
-            except ValueError:
-                print("Несоответствие типов!")
-            if is_positive(a, b):
-                print("Гипотенуза тругольника равна ", hypotenuse(a, b))
-                print("Периметр треугольника равен ", perimetr(a, b, hypotenuse(a,b)))
+            while True:
+                try:
+                    a = float(input("Введите первую сторону треугольника "))
+                    if a > 0:
+                        break
+                    else:
+                        print("Сторона треугольника не можеть быть с отрицательным значением!")
+                except ValueError:
+                    print("Несоответствие типов!")
+            while True:
+                try:
+                    b = float(input("Введите вторую сторону треугольника "))
+                    if b > 0:
+                        break
+                    else:
+                        print("Сторона треугольника не можеть быть с отрицательным значением!")
+
+                except ValueError:
+                    print("Несоответствие типов!")
+
+            print("Гипотенуза тругольника равна ", hypotenuse(a, b))
+            print("Периметр треугольника равен ", perimetr(a, b, hypotenuse(a, b)))
         else:
             print("Извините, в меню нет пункта ", choice, ".")
 

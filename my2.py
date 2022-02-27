@@ -4,14 +4,6 @@
 """
 
 
-def is_two_digit(numeric):
-    """ Функция для проверки вводимого число - состоит ли он из 2 чисел """
-    if 100 > numeric > 9:
-        return numeric
-    else:
-        print("Число должно быть двузначным!")
-
-
 def sum_find(num1, num2):
     """ Функция расчета суммы цифр числа """
     s = num1 + num2
@@ -39,15 +31,20 @@ def main():
         if choice == "0":
             print("До свидания!")
         elif choice == "1":
-            try:
-                num = int(input("Введите двузначное число "))
-            except ValueError:
-                print("Несоответствие типов!")
+            while True:
+                try:
+                    num = int(input("Введите двузначное число "))
+                    if 100 > num > 9:
+                        break
+                    else:
+                        print("Число должно быть двузначным и позитивным !")
+                except ValueError:
+                    print("Несоответствие типов!")
             numeric1 = num // 10
             numeric2 = num % 10
-            if is_two_digit(num):
-                print("Сумма цифр числа равна ", sum_find(numeric1, numeric2))
-                print("Произведение цифр числа равно ", multi_find(numeric1, numeric2))
+
+            print("Сумма цифр числа равна ", sum_find(numeric1, numeric2))
+            print("Произведение цифр числа равно ", multi_find(numeric1, numeric2))
         else:
             print("Извините, в меню нет пункта ", choice, ".")
 

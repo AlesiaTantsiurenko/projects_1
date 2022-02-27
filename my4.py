@@ -25,14 +25,6 @@ def root_2(num1, num2, num3):
     return root2
 
 
-def is_positive_a(num1):
-    """ Функция для проверки вводимого коефициента А """
-    if num1 > 0:
-        return num1
-    else:
-        print("A не может быть равным нулю или меньше нуля!")
-
-
 def is_positive_d(d):
     """ Функция для проверки значения дискриминанта """
     if d >= 0:
@@ -56,23 +48,38 @@ def main():
         if choice == "0":
             print("До свидания!")
         elif choice == "1":
-            try:
-                a = int(input("Введите коефициент A = "))
-                b = int(input("Введите коефициент B = "))
-                c = int(input("Введите коефициент C = "))
-            except ValueError:
-                print("Несоответствие типов!")
-            if is_positive_a(a):
-                d = discriminant(a, b, c)
-                if is_positive_d(d):
-                    x1 = root_1(a, b, c)
-                    x2 = root_2(a, b, c)
-                    if x1 < x2:
-                        print("Меньший корень = ", x1)
-                        print("Больший корень = ", x2)
+            while True:
+                try:
+                    a = float(input("Введите коефициент A = "))
+                    if a > 0:
+                        break
                     else:
-                        print("Меньший корень = ", x2)
-                        print("Больший корень = ", x1)
+                        print("Коефициент А не может быть отридцательным!")
+                except ValueError:
+                    print("Несоответствие типов!")
+            while True:
+                try:
+                    b = float(input("Введите коефициент B = "))
+                    break
+                except ValueError:
+                    print("Несоответствие типов!")
+            while True:
+                try:
+                    c = float(input("Введите коефициент C = "))
+                    break
+                except ValueError:
+                    print("Несоответствие типов!")
+
+            d = discriminant(a, b, c)
+            if is_positive_d(d):
+                x1 = root_1(a, b, c)
+                x2 = root_2(a, b, c)
+                if x1 < x2:
+                    print("Меньший корень = ", x1)
+                    print("Больший корень = ", x2)
+                else:
+                    print("Меньший корень = ", x2)
+                    print("Больший корень = ", x1)
 
         else:
             print("Извините, в меню нет пункта ", choice, ".")

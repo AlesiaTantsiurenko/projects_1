@@ -28,10 +28,15 @@ def main():
         if choice == "0":
             print("До свидания!")
         elif choice == "1":
-            try:
-                byte = int(input("Введите количество байт "))
-            except ValueError:
-                print("Несоответствие типов!")
+            while True:
+                try:
+                    byte = int(input("Введите количество байт "))
+                    if byte>0:
+                        break
+                    else:
+                        print("Значение байт должно быть позитивным!")
+                except ValueError:
+                    print("Несоответствие типов!")
             kilobyte = byte // 1024
             if is_positive_byte(byte):
                 print("В ", byte, " байтах содержиться ", kilobyte, " полных киллобайт(-а).")

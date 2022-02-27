@@ -23,14 +23,6 @@ def volume(r):
     return v
 
 
-def is_positive(r):
-    """ Функция для проверки вводимого значения - является ли оно позитивным """
-    if r > 0:
-        return r
-    else:
-        print("Радиус не может быть отрицательным либо равняться нулю! ")
-
-
 def main():
     print(" Добро пожаловать в программу расчета длины, площади окружности и объема сферы!")
     choice = None
@@ -48,26 +40,40 @@ def main():
         if choice == "0":
             print("До свидания!")
         elif choice == "1":
-            try:
-                radius = float(input("Введите радиус "))
-            except ValueError:
-                print("Несоответствие типов!")
-            if is_positive(radius):
-                print("Длина окружности равна ", length(radius))
+            while True:
+                try:
+                    radius = float(input("Введите радиус "))
+                    if radius > 0:
+                        break
+                    else:
+                        print("Радиус не может быть отридцательным!")
+                except ValueError:
+                    print("Несоответствие типов!")
+
+            print("Длина окружности равна ", length(radius))
         elif choice == "2":
-            try:
-                radius = float(input("Введите радиус "))
-            except ValueError:
-                print("Несоответствие типов!")
-            if is_positive(radius):
-                print("Площадь окружности равна ", area(radius))
+            while True:
+                try:
+                    radius = float(input("Введите радиус "))
+                    if radius > 0:
+                        break
+                    else:
+                        print("Радиус не может быть отридцательным!")
+                except ValueError:
+                    print("Несоответствие типов!")
+
+            print("Площадь окружности равна ", area(radius))
         elif choice == "3":
-            try:
-                radius = float(input("Введите радиус "))
-            except ValueError:
-                print("Несоответствие типов!")
-            if is_positive(radius):
-                print("Объем сферы равен ", volume(radius))
+            while True:
+                try:
+                    radius = float(input("Введите радиус "))
+                    if radius > 0:
+                        break
+                    else:
+                        print("Радиус не может быть отридцательным!")
+                except ValueError:
+                    print("Несоответствие типов!")
+            print("Объем сферы равен ", volume(radius))
         else:
             print("Извините, в меню нет пункта ", choice, ".")
 
