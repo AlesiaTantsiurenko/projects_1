@@ -30,8 +30,7 @@ def main():
                 except ValueError:
                     print("Несоответствие типов!")
             kilobyte = byte // 1024
-            if is_positive_byte(byte):
-                print("В ", byte, " байтах содержиться ", kilobyte, " полных киллобайт(-а).")
+            print("В ", byte, " байтах содержиться ", kilobyte, " полных киллобайт(-а).")
         else:
             print("Извините, в меню нет пункта ", choice, ".")
 
